@@ -3,56 +3,44 @@ import React, { useState } from "react";
 const Form = () => {
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
-    const form = e.currentTarget;
-    if (!form) {
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const attendance = formData.get("attendance") as string;
+    const guests = formData.get("guests") as string;
+    const message = formData.get("message") as string;
+
+    if (!name || !attendance || !guests) {
+      alert("Por favor, llena los campos principales.");
       setLoading(false);
       return;
     }
 
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get("name"),
-      attendance: formData.get("attendance"),
-      guests: formData.get("guests"),
-      message: formData.get("message"),
-    };
+    // 📱 CONFIGURACIÓN DE WHATSAPP
+    // Reemplaza el número de abajo por tu número de WhatsApp con el código de tu país (ej. 502 para Guatemala) sin espacios ni el signo +
+    const numeroTelefono = "50257004869"; 
 
+    // Estructura del mensaje de texto para WhatsApp
+    const textoMensaje = `¡Hola! Confirmo mi asistencia a la boda:%0A%0A` +
+                         `*Nombre:* ${encodeURIComponent(name)}%0A` +
+                         `*¿Asistiré?:* ${encodeURIComponent(attendance)}%0A` +
+                         `*Cantidad de invitados:* ${encodeURIComponent(guests)}%0A` +
+                         `*Mensaje:* ${encodeURIComponent(message || "Sin mensaje")}`;
 
-    if (!data.name || !data.attendance || !data.guests || !data.message) {
-      alert("All fields are required!");
-      setLoading(false); 
-      return;
-    }
-
-    const response = await fetch("/api/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      // Reset the form if submission is successful
-      form.reset();
-      alert("RSVP submitted successfully!");
-    } else {
-      alert("Failed to submit RSVP");
-    }
-
-    setLoading(false); // Set loading to false after response
+    // Abre WhatsApp en una nueva pestaña
+    window.open(`https://wa.me{numeroTelefono}?text=${textoMensaje}`, "_blank");
+    
+    setLoading(false);
   };
 
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-      {/* Form fields */}
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-white">
-          Nama
+        <label htmlFor="name" className="block text-sm font-medium text-white text-left">
+          Nombre completo
         </label>
         <input
           type="text"
@@ -64,68 +52,58 @@ const Form = () => {
       </div>
 
       <div>
-        <label
-          htmlFor="attendance"
-          className="block text-sm font-medium text-white"
-        >
-          Kehadiran
+        <label htmlFor="attendance" className="block text-sm font-medium text-white text-left">
+          ¿Confirmas tu asistencia?
         </label>
         <select
           id="attendance"
           name="attendance"
-          className="block w-full p-2 mt-1 bg-black/40 text-white border border-gray-300 rounded-md shadow-sm  sm:text-sm"
+          className="block w-full p-2 mt-1 bg-black/40 text-white border border-gray-300 rounded-md shadow-sm sm:text-sm"
           required
         >
-          <option value="">Pilih Kehadiran</option>
-          <option value="Hadir">Hadir</option>
-          <option value="Tidak Hadir">Tidak Hadir</option>
+          <option value="">Selecciona una opción</option>
+          <option value="Sí, asistiré con gusto">Sí, asistiré con gusto</option>
+          <option value="Lo siento, no podré asistir">Lo siento, no podré asistir</option>
         </select>
       </div>
 
       <div>
-        <label
-          htmlFor="guests"
-          className="block text-sm font-medium text-white"
-        >
-          Jumlah Tamu
+        <label htmlFor="guests" className="block text-sm font-medium text-white text-left">
+          ¿Cuántas personas asisten contigo?
         </label>
         <select
           id="guests"
           name="guests"
-          className="block w-full p-2 mt-1  bg-black/40 text-white border border-gray-300 rounded-md shadow-sm  sm:text-sm"
+          className="block w-full p-2 mt-1 bg-black/40 text-white border border-gray-300 rounded-md shadow-sm sm:text-sm"
           required
         >
-          <option value="">Pilih Jumlah Tamu</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
+          <option value="">Selecciona cantidad</option>
+          <option value="Solo yo (1)">Solo yo (1)</option>
+          <option value="2 personas">2 personas</option>
+          <option value="3 personas">3 personas</option>
+          <option value="4 personas">4 personas</option>
         </select>
       </div>
 
       <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-white"
-        >
-          Ucapan
+        <label htmlFor="message" className="block text-sm font-medium text-white text-left">
+          Dedicatoria o mensaje especial (Opcional)
         </label>
         <textarea
           id="message"
           name="message"
           rows={4}
           className="block w-full p-2 mt-1 bg-white/10 text-white border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-          required
         />
       </div>
 
       <div>
         <button
           type="submit"
-          className="block w-full p-2 text-sm font-medium text-center text-black bg-white border border-transparent rounded-md shadow-sm"
+          className="block w-full p-2 text-sm font-medium text-center text-black bg-white border border-transparent rounded-md shadow-sm hover:bg-gray-200 transition-colors cursor-pointer"
           disabled={loading} 
         >
-          {loading ? "Submitting..." : "Submit"} 
+          {loading ? "Enviando..." : "Confirmar por WhatsApp"} 
         </button>
       </div>
     </form>
