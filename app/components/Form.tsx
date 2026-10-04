@@ -19,16 +19,20 @@ const Form = () => {
       return;
     }
 
-    // Estructura del mensaje de texto para WhatsApp
-    const textoMensaje = `¡Hola! Confirmo mi asistencia a la boda:%0A%0A` +
-                         `*Nombre:* ${encodeURIComponent(name)}%0A` +
-                         `*¿Asistiré?:* ${encodeURIComponent(attendance)}%0A` +
-                         `*Cantidad de invitados:* ${encodeURIComponent(guests)}%0A` +
-                         `*Mensaje:* ${encodeURIComponent(message || "Sin mensaje")}`;
+// 📱 CONFIGURACIÓN DE WHATSAPP DIRECTA:
+    const phoneNumber = "50257004869"; // <--- Tu número real aquí (ej. código de país + número)
 
-    // 📱 CONFIGURACIÓN DE WHATSAPP:
-    // Cambia el "50200000000" de abajo por tu número real con el código de tu país (ej. 502 para Guatemala) sin espacios ni signos +
-    window.open(`https://wa.me{50257004869}`, "_blank");
+    const fullMessage = 
+      `¡Hola! Confirmo mi asistencia a la boda:\n\n` +
+      `*Nombre:* ${name}\n` +
+      `*¿Asistiré?:* ${attendance}\n` +
+      `*Cantidad de invitados:* ${guests}\n` +
+      `*Mensaje:* ${message || "Sin mensaje"}`;
+
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(fullMessage)}`,
+      "_blank"
+    );
     
     setLoading(false);
   };
