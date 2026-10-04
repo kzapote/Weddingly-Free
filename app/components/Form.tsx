@@ -19,10 +19,6 @@ const Form = () => {
       return;
     }
 
-    // 📱 CONFIGURACIÓN DE WHATSAPP
-    // Reemplaza el número de abajo por tu número de WhatsApp con el código de tu país (ej. 502 para Guatemala) sin espacios ni el signo +
-    const numeroTelefono = "50257004869"; 
-
     // Estructura del mensaje de texto para WhatsApp
     const textoMensaje = `¡Hola! Confirmo mi asistencia a la boda:%0A%0A` +
                          `*Nombre:* ${encodeURIComponent(name)}%0A` +
@@ -30,8 +26,9 @@ const Form = () => {
                          `*Cantidad de invitados:* ${encodeURIComponent(guests)}%0A` +
                          `*Mensaje:* ${encodeURIComponent(message || "Sin mensaje")}`;
 
-    // Abre WhatsApp en una nueva pestaña
-    window.open(`https://wa.me{numeroTelefono}?text=${textoMensaje}`, "_blank");
+    // 📱 CONFIGURACIÓN DE WHATSAPP:
+    // Cambia el "50200000000" de abajo por tu número real con el código de tu país (ej. 502 para Guatemala) sin espacios ni signos +
+    window.open(`https://wa.me{50257004869}`, "_blank");
     
     setLoading(false);
   };
