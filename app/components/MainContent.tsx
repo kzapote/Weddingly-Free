@@ -149,14 +149,14 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
             </div>
             <div>
               <p className="mt-5 text-lg uppercase font-xs tracking-widest text-white">
-                {name ? `Dear ${name},` : "Bienvenido"}
+                {name ? `Estimado ${name},` : "Bienvenido"}
               </p>
               {!isOpen ? (
                 <button
                   className="animate-bounce  mt-5 px-5 py-1 uppercase text-xs border border-white hover:text-white hover:bg-transparent rounded-full bg-white text-black transition"
                   onClick={handleOpen}
                 >
-                  Open Invitation
+                  ¡Abre tu invitación!
                 </button>
               ) : (
                 <IoIosArrowUp
@@ -205,11 +205,11 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                 ref={slide2Ref}
                 className={`fadeInMove ${isSlide2InView ? "active" : ""}  `}
               >
-                <p className="font-legan text-sm my-2">The Groom</p>
+                <p className="font-legan text-sm my-2">El Novio</p>
                 <h1 className="text-xl md:text-3xl text-white  font-ovo">
                   {config.groom}
                 </h1>
-                <h3 className="font-thesignature text-2xl">About {config.groomNickName},</h3>
+                <h3 className="font-thesignature text-2xl">Acerca de {config.groomNickName},</h3>
                 <p className="text-sm mt-5 font-legan text-[#CCCCCC]">
                   {config.groomBio}
                 </p>
@@ -235,11 +235,11 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                 ref={slide3Ref}
                 className={`fadeInMove ${isSlide3InView ? "active" : ""}  `}
               >
-                <p className="font-legan text-sm my-2">The Bride</p>
+                <p className="font-legan text-sm my-2">La Novia</p>
                 <h1 className="text-xl md:text-3xl text-white  font-ovo">
                   {config.bride}
                 </h1>
-                <h3 className="font-thesignature text-2xl">About {config.brideNickName},</h3>
+                <h3 className="font-thesignature text-2xl">Acerca de {config.brideNickName},</h3>
                 <p className="text-sm mt-5 font-legan text-[#CCCCCC]">
                   {config.brideBio}
                 </p>
@@ -267,7 +267,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   className={`text-xl md:text-5xl  text-white font-ovo fadeInMove ${isSlide4InView ? " active" : ""
                     }`}
                 >
-                  A journey in love
+                  Un viaje por amor
                 </h1>
                 <h3
                   ref={slide4Ref}
@@ -338,7 +338,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   }  fadeInMove flex items-center flex-col pt-32 `}
               >
                 <h3 className="uppercase font-legan text-xs tracking-wide mt-5 mb-2">
-                  save our date
+                  Reserva esta fecha
                 </h3>
                 <h1 className="text-2xl w-[200px] text-center text-white  font-ovo uppercase">
                   {new Date(config.eventDate).toLocaleDateString("en-US", {
@@ -352,7 +352,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                 {config.holyMatrimony.enabled && (
                   <div className="mt-5 mx-auto flex flex-col items-center">
                     <h3 className="uppercase font-ovo text-sm text-center mt-5 mb-2">
-                      Holy Matrimony <br /> {config.holyMatrimony.time}
+                      Sagrado Matrimonio <br /> {config.holyMatrimony.time}
                     </h3>
                     <p className="text-sm text-center  font-legan text-white">
                       {config.holyMatrimony.place} <br /> {config.holyMatrimony.place_details}
@@ -370,7 +370,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                 {config.weddingReception.enabled && (
                   <div className="mt-5 mx-auto flex  flex-col items-center">
                     <h3 className="uppercase font-ovo text-sm text-center mt-5 mb-2">
-                      Wedding Reception <br /> {config.weddingReception.time}
+                      Recepción de Boda <br /> {config.weddingReception.time}
                     </h3>
                     <p className="text-sm text-center  font-legan text-white">
                       {config.weddingReception.place} <br /> {config.weddingReception.place_details}
@@ -401,7 +401,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   }  fadeInMove flex items-center flex-col`}
               >
                 <h1 className="text-2xl text-center text-white  font-ovo">
-                  ALMOST TIME FOR OURCELEBRATION
+                  YA CASI LLEGA EL MOMENTO DE NUESTRA CELEBRACIÓN
                 </h1>
                 {/* Countdown Timer */}
                 <CountdownTimer />
@@ -422,7 +422,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   className={`text-2xl text-white  font-ovo fadeInMoveSlow ${isSlide7InView ? "active" : ""
                     }`}
                 >
-                  JOIN OUR EXCLUSIVE LIVE STREAMING EVENT
+                  ÚNETE A NUESTRO EVENTO EXCLUSIVO EN VIVO
                 </h1>
 
                 <div
@@ -447,7 +447,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                     target="_blank"
                     className="cursor-pointer hover:text-white/20 text-sm rounded-full flex items-center gap-x-2 text-center font-legan mt-5 bg-[#3B3B3B] w-fit px-6 py-2 text-white"
                   >
-                    Join Live Streaming
+                    Únete a la transmisión en vivo
                   </Link>
                 </div>
               </div>)}
@@ -466,7 +466,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   className={`${isSlide8InView ? "active" : ""} fadeInMove `}
                 >
                   <h1 className="text-3xl text-white  font-ovo text-center uppercase">
-                    Unveiling Our Prewedding Story
+                    Te contamos nuestra historia previa a la boda
                   </h1>
                   <div
                     className="mt-10 mx-auto w-full max-w-2xl relative"
@@ -505,7 +505,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                 className={`${isSlide9InView ? "active" : ""} fadeInMove`}
               >
                 <h1 className="text-3xl text-white font-ovo text-center uppercase">
-                  RSVP AND WISHES
+                  CONFIRMACIÓN DE ASISTENCIA Y DESEOS
                 </h1>
                 <p className="text-sm font-legan text-white/80 text-center">
                 {config.rsvp.detail}
@@ -530,7 +530,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                 className={`${isSlide10InView ? "active" : ""} fadeInMove`}
               >
                 <h1 className="text-3xl text-white font-ovo text-center uppercase">
-                  Wishes
+                  Deseos
                 </h1>
                 <WishesList />
               </div>
