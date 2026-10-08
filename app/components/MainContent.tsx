@@ -341,7 +341,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   Reserva esta fecha
                 </h3>
                 <h1 className="text-2xl w-[200px] text-center text-white  font-ovo uppercase">
-                  {new Date(config.eventDate).toLocaleDateString("en-US", {
+                  {new Date(config.eventDate).toLocaleDateString("es-ES", {
                     weekday: "long",
                   })} <br />  {new Date(config.eventDate).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -431,7 +431,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   ref={slide7Ref}
                 >
                   <h3 className="uppercase font-ovo text-sm mt-5 mb-2">
-                    {new Date(config.eventDate).toLocaleDateString("en-US", {
+                    {new Date(config.eventDate).toLocaleDateString("es-ES", {
                       weekday: "long",
                       year: "numeric",
                       month: "long",
