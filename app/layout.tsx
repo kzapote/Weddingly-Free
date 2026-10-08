@@ -30,8 +30,8 @@ const ovo = Ovo({
 
 
 export const metadata: Metadata = {
-  title: `The Wedding of ${config.coupleNames}`,
-  description: `Wedding Invitation of ${config.coupleNames}, made by Peter Shaan`,
+  title: `La Boda de ${config.coupleNames}`,
+  description: `Invitación de boda de ${config.coupleNames}, made by Peter Shaan`,
 };
 
 export default function RootLayout({
