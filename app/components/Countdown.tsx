@@ -4,7 +4,7 @@ const eventDate = process.env.NEXT_PUBLIC_EVENT_DATE
 
 const CountdownTimer = () => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date(eventDate || "2025-01-01T00:00:00"); 
+    const targetDate = new Date(eventDate || "2027-01-23T00:00:00"); 
     const now = new Date();
     const difference = Number(targetDate) - Number(now);
 
@@ -41,19 +41,19 @@ const CountdownTimer = () => {
     <div className="flex space-x-4 mt-5 text-center font-legan">
       <div className="flex flex-col">
         <span className="text-4xl font-bold">{timeLeft.days}</span>
-        <span className="text-sm uppercase">Days</span>
+        <span className="text-sm uppercase">Días</span>
       </div>
       <div className="flex flex-col">
         <span className="text-4xl font-bold">{timeLeft.hours}</span>
-        <span className="text-sm uppercase">Hours</span>
+        <span className="text-sm uppercase">Horas</span>
       </div>
       <div className="flex flex-col">
         <span className="text-4xl font-bold">{timeLeft.minutes}</span>
-        <span className="text-sm uppercase">Minutes</span>
+        <span className="text-sm uppercase">Minutos</span>
       </div>
       <div className="flex flex-col">
         <span className="text-4xl font-bold">{timeLeft.seconds}</span>
-        <span className="text-sm uppercase">Seconds</span>
+        <span className="text-sm uppercase">Segundos</span>
       </div>
     </div>
   );
