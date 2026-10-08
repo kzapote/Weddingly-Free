@@ -125,7 +125,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   } `}
                 ref={main2Ref}
               >
-                The Wedding Of
+                La Boda De
               </h5>
               <h1
                 className={`text-2xl md:text-3xl font-ovo t text-white uppercase fadeMain ${isMainInView ? "active" : ""
