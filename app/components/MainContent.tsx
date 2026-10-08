@@ -139,7 +139,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                   } `}
                 ref={main2Ref}
               >
-                {new Date(config.eventDate).toLocaleDateString("en-US", {
+                {new Date(config.eventDate).toLocaleDateString("es-ES", {
                   weekday: "long",
                   year: "numeric",
                   month: "long",
@@ -149,7 +149,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
             </div>
             <div>
               <p className="mt-5 text-lg uppercase font-xs tracking-widest text-white">
-                {name ? `Dear ${name},` : "Welcome"}
+                {name ? `Dear ${name},` : "Bienvenido"}
               </p>
               {!isOpen ? (
                 <button
