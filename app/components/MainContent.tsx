@@ -343,7 +343,7 @@ const WeddingScreen = ({ name }: WeddingScreenProps) => {
                 <h1 className="text-2xl w-[200px] text-center text-white  font-ovo uppercase">
                   {new Date(config.eventDate).toLocaleDateString("es-ES", {
                     weekday: "long",
-                  })} <br />  {new Date(config.eventDate).toLocaleDateString("en-US", {
+                  })} <br />  {new Date(config.eventDate).toLocaleDateString("es-ES", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
